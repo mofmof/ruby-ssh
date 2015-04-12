@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ruby/ssh/version'
+require 'ruby-ssh/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "ruby-ssh"
-  spec.version       = Ruby::Ssh::VERSION
+  spec.version       = RubySSH::VERSION
   spec.authors       = ["a.harada"]
   spec.email         = ["redhornet96@gmail.com"]
 
@@ -22,6 +22,8 @@ Gem::Specification.new do |spec|
     spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
   end
 
+  spec.add_dependency "net-ssh", "~> 2.0"
   spec.add_development_dependency "bundler", "~> 1.8"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec"
 end
