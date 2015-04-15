@@ -1,4 +1,4 @@
-# Ruby::Ssh
+# RubySSH
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ruby/ssh`. To experiment with that code, run `bin/console` for an interactive prompt.
 
@@ -22,7 +22,16 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+Net::SSH.start('ipaddress', 'username', password: 'password') do |ssh|
+  ssh.shell_runner do |runner|
+    result = runner.exec('ls -l')
+    puts result.success?
+    puts result.stdout
+  end
+end
+```
+
 
 ## Development
 

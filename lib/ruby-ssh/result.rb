@@ -6,5 +6,9 @@ module RubySSH
       @stdout = args[:stdout]
       @exit_status = args[:exit_status]
     end
+
+    def success?
+      @exit_status == 0
+    end
   end
 end
