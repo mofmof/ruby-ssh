@@ -22,4 +22,11 @@ namespace :dev do
     result = RubySSH.run(HOST, USER, password: 'testpass', script: 'ls')
     puts result.success?
   end
+
+  task :run_with_key do
+    # TODO 失敗時に標準出力がかえらない
+    result = RubySSH.run(HOST, 'biscuits_d5df0fdd', keys: ['~/.ssh/biscuits_keys/514bff4fecccf277'], script: 'sudo sshd -T')
+    puts result.stdout
+    puts result.success?
+  end
 end
