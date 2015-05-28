@@ -12,6 +12,7 @@ namespace :dev do
       ssh.shell_runner do |runner|
         result = runner.exec('ls -l')
         puts result.stdout
+        puts result.stderr
         puts result.exit_status
         puts result.success?
       end

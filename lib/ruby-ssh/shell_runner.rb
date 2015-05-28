@@ -5,10 +5,14 @@ module RubySSH
     end
 
     def exec(script)
-      stdout, exit_status = nil
+      stdout, stderr, exit_status = nil
       @session.open_channel do |channel|
         channel.on_data do |ch, data|
           stdout = data
+        end
+
+        channel.on_extended_data do |ch, type, data|
+          stderr = data
         end
 
         channel.send_channel_request 'shell' do |ch, success|
@@ -26,7 +30,7 @@ module RubySSH
         end
       end
       @session.loop
-      RubySSH::Result.new(stdout: stdout, exit_status: exit_status)
+      RubySSH::Result.new(stdout: stdout, stderr: stderr, exit_status: exit_status)
     end
   end
 end
